@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ArticlesItem>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = null;
+}
+@Model.ArticleTitle 
+<div style="width:60%; margin: 0 auto">
+<p style="text-align:center">@Model.Author - @Model.ArticlePublishedDate</p>
+@Model.ArticleContent
+</div>

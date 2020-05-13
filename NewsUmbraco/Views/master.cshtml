@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+@* the fun starts here *@
+
+
+@{
+	var selection = Umbraco.Content(Guid.Parse("d33f7dc5-91f3-488c-a231-730774f95e06"))
+    .ChildrenOfType("articlesItem")
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
+}
+<ul>
+	@foreach (var item in selection)
+	{
+		
+		<article class="special">
+            <div class="articletitle"><a href="@item.Url">@item.Name</a></div>
+            <div class="articlereview">@Html.Raw(item.Value("articleContent").ToString().Truncate(100)) <a href="@item.Url">Read more</a></div>
+        </article>
+	}
+</ul>
+
+
